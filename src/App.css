@@ -41,12 +41,83 @@
   color: #888;
 } */
 
-.card {
 
- border: '1px solid #4b5362',
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f0f2f5;
+  margin: 0;
   padding: 20px;
-   margin: '10px',
-   ackgroundColor: '#31363f',
-  borderRadius: '10px',
-  minHeight: '100',
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+}
+
+.Card {
+  background: #fff;
+  padding: 20px;
+  width: 280px;
+  border-radius: 12px;
+  margin: 15px auto;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.Card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 8px 20px rgba(0,0,0,0.15);
+};
+
+
+
+.btn-like {
+  background-color: #777;
+  color: white;
+}
+
+.btn-like:hover {
+  background-color: #555;
+}
+
+.btn-liked {
+  background-color: #28a745; 
+  color: white;
+}
+
+.btn-liked:hover {
+  background-color: #1e7e34;
+}
+
+.btn-increase {
+  background-color: #007bff;
+  color: white;
+}
+
+.btn-increase:hover {
+  background-color: #0056b3;
+}
+
+.btn-decrease {
+  background-color: #dc3545;
+  color: white;
+  margin: 2px;
+}
+
+.btn-decrease:hover {
+  background-color: #b52a37;
+}
+
+
+button {
+  padding: 8px 14px;
+  font-size: 14px;
+  background-color: #007bff;
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
 }
