@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Search from "./component/Search";
  import './App.css'
 
+
 const API_BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
@@ -79,13 +80,14 @@ const App = () => {
       <div className="pattern" />
 
       <div className="wrapper">
-        <header>
+         <header>
+
           <h1>Find Movies you will enjoy without the Hassle</h1>
           <Search 
             searchTerm={searchTerm} 
             setSearchTerm={setSearchTerm}
           />
-        </header>
+        </header> 
 
         <section className="all-movies">
           <h2>All Movies</h2>
