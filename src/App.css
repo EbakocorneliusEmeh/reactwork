@@ -129,9 +129,22 @@ button {
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #121212;
   color: #ffffff;
+    background-color: #030014;
+
 }
+
+.hero img {
+  width: 500px;
+}
+
+
+span {
+  background-image: linear-gradient(#D6C7FF, #AB8BFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* 
 .pattern {
   position: absolute;
@@ -145,10 +158,35 @@ body {
 } */
 
 .wrapper {
-  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
+
+.header {
+  background-image: url(../src/assets/BG.png);
+}
+
+
+
+.header h2 {
+  font-size: 2rem;
+  display: flex;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.head {
+  display: flex;
+  justify-content: center;
+  justify-self: center;
+
+  h2 {
+    font-size: 3rem;
+  }
+} 
+
+
+
 
 header {
   text-align: center;
@@ -159,11 +197,14 @@ header {
 header h1 {
   font-size: 2rem;
   margin-bottom: 20px;
+  
 }
 
 .all-movies h2 {
-  font-size: 1.5rem;
+  font-size: 5rem;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
 }
 
 .search-container input {
@@ -187,7 +228,10 @@ header h1 {
 .movies-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
+  gap: 30px;
+  max-width: 1200px;
+    margin: 0 auto;
+  padding: 20px;
 }
 
 .movie-card {
@@ -204,10 +248,9 @@ header h1 {
 }
 
 .search {
-  display: flex;
-  justify-content: center;
   margin-bottom: 30px;
-}
+  margin-left: 7rem;
+} 
 
 
 .movie-card img {
@@ -240,7 +283,7 @@ header h1 {
 
 
 .search input {
-  width: 100%;
+  width: 90%;
   padding: 12px 20px;
   font-size: 1rem;
   border: 2px solid #555;
@@ -249,6 +292,8 @@ header h1 {
   background-color: #1e1e1e;
   color: #fff;
   transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
 }
 
 .search input::placeholder {
