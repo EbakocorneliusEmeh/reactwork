@@ -2,15 +2,15 @@
 
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-// import Detail from "./pages/Detail";
 import Home from "./component/home";
+import Detail from "./component/detail";
 
 const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
-        {/* <Route path="/movie/:id" element={<Detail />} /> */}
+         <Route path="/movie/:id" element={<Detail />} /> 
       </Routes>
     </Router>
   );

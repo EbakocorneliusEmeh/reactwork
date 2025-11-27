@@ -97,7 +97,7 @@ const Home = () => {
 
           {errorMessage && <p className="text-red-500">{errorMessage}</p>}
 
-          <div className="movies-grid">
+          {/* <div className="movies-grid">
             {isLoading ? (
               <p>Loading movies...</p>
             ) : movies.length > 0 ? (
@@ -119,7 +119,38 @@ const Home = () => {
             ) : (
               <p>No movies found yet.</p>
             )}
-          </div>
+          </div> */}
+
+
+          <div className="movies-grid">
+  {isLoading ? (
+    <p>Loading movies...</p>
+  ) : movies.length > 0 ? (
+    movies.map((movie) => (
+      // Link to your Detail page inside the app
+      <Link key={movie.id} to={`/movie/${movie.id}`}>
+        <div className="movie-card">
+          {movie.poster_path ? (
+            <img
+              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
+              alt={movie.title}
+            />
+          ) : (
+            <div className="placeholder">No Image</div>
+          )}
+          <h3>{movie.title}</h3>
+        </div>
+      </Link>
+    ))
+  ) : (
+    <p>No movies found yet.</p>
+  )}
+</div>
+
+
+
+
+
         </section>
       </div>
     </main>
