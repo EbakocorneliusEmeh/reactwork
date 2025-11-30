@@ -33,7 +33,6 @@ const Detail = () => {
       <div className="wrapper">
         <section className="movie-detail">
           <div className="con">
-
             <div className="hero">
               {movie.poster_path ? (
                 <img
@@ -50,10 +49,8 @@ const Detail = () => {
               <p>{movie.overview}</p>
             </div>
 
-            <h3 className="Actors"
-            >Main Actors:</h3>
-            <di
-             className="actors-grid">
+            <h3 className="Actors">Main Actors:</h3>
+            <di className="actors-grid">
               {cast.map((actor) => (
                 <div key={actor.id} className="actor-card">
                   {actor.profile_path ? (
@@ -84,7 +81,6 @@ const Detail = () => {
                 Back to Movies
               </Link>
             </div>
-
           </div>
         </section>
       </div>

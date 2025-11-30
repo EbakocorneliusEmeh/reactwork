@@ -41,7 +41,6 @@
   color: #888;
 } */
 
-
 /* 
 body {
   font-family: Arial, Helvetica, sans-serif;
@@ -122,27 +121,15 @@ button {
   transition: 0.3s;
 } */
 
-
-
-
-
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   color: #ffffff;
-    background-color: #030014;
-
+  background-color: #030014;
 }
 
 .hero img {
   width: 500px;
-}
-
-
-span {
-  background-image: linear-gradient(#D6C7FF, #AB8BFF);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 /* 
@@ -166,8 +153,6 @@ span {
   background-image: url(../src/assets/BG.png);
 }
 
-
-
 .header h2 {
   font-size: 2rem;
   display: flex;
@@ -183,21 +168,16 @@ span {
   h2 {
     font-size: 3rem;
   }
-} 
-
-
-
+}
 
 header {
   text-align: center;
   margin-bottom: 40px;
 }
 
-
 header h1 {
   font-size: 2rem;
   margin-bottom: 20px;
-  
 }
 
 .all-movies h2 {
@@ -230,7 +210,7 @@ header h1 {
   grid-template-columns: repeat(5, 1fr);
   gap: 30px;
   max-width: 1200px;
-    margin: 0 auto;
+  margin: 0 auto;
   padding: 20px;
 }
 
@@ -250,8 +230,7 @@ header h1 {
 .search {
   margin-bottom: 30px;
   margin-left: 7rem;
-} 
-
+}
 
 .movie-card img {
   width: 100%;
@@ -277,10 +256,6 @@ header h1 {
   color: #ff4d4f;
   margin-bottom: 20px;
 }
-
-
-
-
 
 .search input {
   width: 90%;
