@@ -167,6 +167,17 @@ body {
 
   h2 {
     font-size: 3rem;
+    color: aqua;
+  }
+}
+
+.bone-header {
+  h1 {
+    display: flex;
+    justify-content: flex-start;
+    color: #2f80ed; 
+    margin-left: 9rem;
+    font-size: 5rem;
   }
 }
 
@@ -274,3 +285,191 @@ header h1 {
 .search input::placeholder {
   color: #bbb;
 }
+
+
+
+.containertwo {
+  background: #111;
+  padding: 3rem 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  color: #fff;
+  border-top: 2px solid #222;
+      background-color: #030014;
+}
+
+.containertwo h1 {
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.containertwo p {
+  color: #ccc;
+  margin: 0.4rem 0;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.2s;
+  
+}
+
+.containertwo p:hover {
+  color: #fff;
+}
+
+
+
+.d {
+      background-color: #030014;
+  padding: 1.2rem 2rem;
+  border-top: 1px solid #222;
+  color: #999;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.d p {
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.sd a {
+  margin-left: 15px;
+  text-decoration: none;
+  color: #bbb;
+  transition: 0.2s;
+  font-size: 0.9rem;
+}
+
+.sd a:hover {
+  color: #fff;
+}
+
+.bone h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2f80ed; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+  
+  .wrapper {
+    padding: 10px;
+  }
+
+
+  .all-movies h2 {
+    font-size: 2rem;
+  }
+
+  .search {
+    margin-left: 15px;
+    text-align: center;
+  }
+
+  .search input {
+    width: 80%;
+    max-width: 100%;
+  }
+
+  .movies-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .movie-card img {
+    height: 180px;
+  }
+
+  .movie-card h3 {
+    font-size: 0.85rem;
+    padding: 6px;
+  }
+}
+
+
+
+
+
+
+
+@media (max-width: 768px) {
+
+  .bone-header h1 {
+    margin-left: 6rem;
+    font-size: 2rem;
+  }
+
+
+
+
+  
+
+  .header {
+    padding: 1.5rem 1rem;
+  }
+
+  .hero img {
+    width: 220px;
+    max-width: 70%;
+  }
+
+  .head h2 {
+    font-size: 1.8rem;
+    line-height: 1.3;
+    padding: 0 10px;
+  }
+
+  .d {
+      background-color: #030014;
+}
+
+
+  .containertwo {
+    grid-template-columns: 1fr;
+    text-align: center;
+    background-color: #030014;
+  }
+
+  .i img {
+    margin: 0 8px;
+  }
+
+  .d {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .sd a {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .hero img {
+    width: 180px;
+  }
+
+  .head h2 {
+    font-size: 1.5rem;
+  }
+}
+
+
+

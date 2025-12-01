@@ -4,6 +4,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./component/home";
 import Detail from "./component/detail";
+import Footer from "./component/footer";
 
 const App = () => {
   return (

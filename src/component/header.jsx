@@ -1,9 +1,15 @@
 import React from 'react';
 import Search from '../component/Search';
 
+
 const Header = () => {
   return (
     <div className='header'>
+      <div>
+        <div className="bone-header">
+            <h1>TMDB</h1>
+          </div>
+      </div>
       <div className='con'>
 
         <div className='hero'>

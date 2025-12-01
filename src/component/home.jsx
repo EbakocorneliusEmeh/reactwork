@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Search from "../component/Search";
 import Header from "../component/header";
+import Footer from "./footer";
 import '../App.css';
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
@@ -152,6 +153,10 @@ const Home = () => {
 
 
         </section>
+      </div>
+      <div>
+        <Footer />
+
       </div>
     </main>
   );
