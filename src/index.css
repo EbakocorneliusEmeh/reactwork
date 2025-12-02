@@ -84,6 +84,7 @@
 .big-btn {
   display: flex;
   justify-content: center;
+  margin-bottom: 3rem;
 }
 
 .back-button {

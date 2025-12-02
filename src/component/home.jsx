@@ -11,153 +11,136 @@ const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 const Home = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
-  const [movies, setMovies] = useState([]);
+  const [nowPlaying, setNowPlaying] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  const fetchMovies = async () => {
+  // Fetch Now Playing
+  const fetchNowPlaying = async () => {
     setIsLoading(true);
     try {
-      const endpoint = `${API_BASE_URL}/discover/movie?sort_by=popularity.desc&api_key=${API_KEY}`;
-      const response = await fetch(endpoint);
-
-      if (!response.ok) {
-        const errData = await response.json();
-        throw new Error(errData.status_message || "Failed fetching movies");
-      }
-
-      const data = await response.json();
-      setMovies(data.results);
+      const res = await fetch(`${API_BASE_URL}/movie/now_playing?api_key=${API_KEY}`);
+      if (!res.ok) throw new Error("Failed fetching now playing movies");
+      const data = await res.json();
+      setNowPlaying(data.results);
       setErrorMessage("");
-    } catch (error) {
-      console.error("Error fetching movies:", error);
-      setErrorMessage("Error fetching movies. Please try again.");
+    } catch (err) {
+      console.error(err);
+      setErrorMessage("Error fetching now playing movies.");
     } finally {
       setIsLoading(false);
     }
   };
 
+  // Fetch Popular
+  const fetchPopularMovies = async () => {
+    try {
+      const res = await fetch(`${API_BASE_URL}/movie/popular?api_key=${API_KEY}`);
+      if (!res.ok) throw new Error("Failed fetching popular movies");
+      const data = await res.json();
+      setPopularMovies(data.results);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  // Search All Movies
   const searchMovies = async (query) => {
-    if (!query) return fetchMovies();
-
+    if (!query) {
+      setSearchResults([]);
+      return;
+    }
     setIsLoading(true);
     try {
-      const endpoint = `${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}&api_key=${API_KEY}`;
-      const response = await fetch(endpoint);
-
-      if (!response.ok) {
-        const errData = await response.json();
-        throw new Error(errData.status_message || "Failed searching movies");
-      }
-
-      const data = await response.json();
-      setMovies(data.results);
-      setErrorMessage("");
-    } catch (error) {
-      console.error("Error searching movies:", error);
-      setErrorMessage("Error searching movies. Please try again.");
+      const res = await fetch(`${API_BASE_URL}/search/movie?query=${encodeURIComponent(query)}&api_key=${API_KEY}`);
+      if (!res.ok) throw new Error("Failed searching movies");
+      const data = await res.json();
+      setSearchResults(data.results);
+    } catch (err) {
+      console.error(err);
+      setErrorMessage("Error searching movies.");
     } finally {
       setIsLoading(false);
     }
   };
 
+  // Initial Load
   useEffect(() => {
-    fetchMovies();
+    fetchNowPlaying();
+    fetchPopularMovies();
   }, []);
 
+  // Debounce search
   useEffect(() => {
-    const delayDebounce = setTimeout(() => {
-      if (searchTerm) {
-        searchMovies(searchTerm);
-      } else {
-        fetchMovies();
-      }
+    const timeout = setTimeout(() => {
+      searchMovies(searchTerm);
     }, 500);
-    return () => clearTimeout(delayDebounce);
+    return () => clearTimeout(timeout);
   }, [searchTerm]);
+
+  // Render either search results or default sections
+  const renderMovies = (moviesArray) => (
+    <div className="movies-grid">
+      {moviesArray.map((movie) => (
+        <Link to={`/movie/${movie.id}`} key={movie.id} className="movie-card-link">
+          <div className="movie-cardd">
+            {movie.poster_path ? (
+              <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />
+            ) : (
+              <div className="placeholder">No Image</div>
+            )}
+            <h3 title={movie.title} className="movie-title">{movie.title}</h3>
+          </div>
+        </Link>
+      ))}
+    </div>
+  );
 
   return (
     <main>
-      <div className="pattern" />
-
       <div className="wrapper">
-        <header>
-        
-   
 
-            <Header/>
-        </header>
-        <div>
-                   <Search 
-  searchTerm={searchTerm}
-  setSearchTerm={setSearchTerm}
-/>
-        </div>
+        <Header />
+       
 
-        <section className="all-movies">
-          <h2>All Movies</h2>
+        <Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
-          {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+        {searchTerm && searchResults.length > 0 ? (
+          <section className="search-results">
+            <h2>Search Results</h2>
+            {renderMovies(searchResults)}
+          </section>
+        ) : (
+          <>
+            <section className="popular-movies">
+              <h2>Popular Movies</h2>
+              <div className="popular-scroll">
+                {popularMovies.length > 0 ? popularMovies.map((movie, index) => (
+                  <Link to={`/movie/${movie.id}`} key={movie.id} className="movie-card-link">
+                    <div className="movie-cardd">
+                      <div className="rank-number">{index + 1}</div>
+                      {movie.poster_path ? (
+                        <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} alt={movie.title} />
+                      ) : (
+                        <div className="placeholder">No Image</div>
+                      )}
+                      <h3 title={movie.title} className="movie-title">{movie.title}</h3>
+                    </div>
+                  </Link>
+                )) : <p>No popular movies right now.</p>}
+              </div>
+            </section>
 
-          {/* <div className="movies-grid">
-            {isLoading ? (
-              <p>Loading movies...</p>
-            ) : movies.length > 0 ? (
-              movies.map((movie) => (
-                <Link key={movie.id} to={`/movie/${movie.id}`}>
-                  <div className="movie-card">
-                    {movie.poster_path ? (
-                      <img 
-                        src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} 
-                        alt={movie.title} 
-                      />
-                    ) : (
-                      <div className="placeholder">No Image</div>
-                    )}
-                    <h3>{movie.title}</h3>
-                  </div>
-                </Link>
-              ))
-            ) : (
-              <p>No movies found yet.</p>
-            )}
-          </div> */}
-
-
-          <div className="movies-grid">
-  {isLoading ? (
-    <p>Loading movies...</p>
-  ) : movies.length > 0 ? (
-    movies.map((movie) => (
-      // Link to your Detail page inside the app
-      <Link key={movie.id} to={`/movie/${movie.id}`}>
-        <div className="movie-card">
-          {movie.poster_path ? (
-            <img
-              src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
-              alt={movie.title}
-            />
-          ) : (
-            <div className="placeholder">No Image</div>
-          )}
-          <h3>{movie.title}</h3>
-        </div>
-      </Link>
-    ))
-  ) : (
-    <p>No movies found yet.</p>
-  )}
-</div>
-
-
-
-
-
-        </section>
+            <section className="now-playing">
+              <h2>Now Playing</h2>
+              {errorMessage && <p className="text-red-500">{errorMessage}</p>}
+              {isLoading ? <p>Loading movies...</p> : renderMovies(nowPlaying)}
+            </section>
+          </>
+        )}
       </div>
-      <div>
-        <Footer />
-
-      </div>
+      <Footer />
     </main>
   );
 };

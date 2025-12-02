@@ -33,7 +33,7 @@ const Detail = () => {
       <div className="wrapper">
         <section className="movie-detail">
           <div className="con">
-            <div className="hero">
+            <div className="heroo">
               {movie.poster_path ? (
                 <img
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
@@ -50,7 +50,7 @@ const Detail = () => {
             </div>
 
             <h3 className="Actors">Main Actors:</h3>
-            <di className="actors-grid">
+            <div className="actors-grid">
               {cast.map((actor) => (
                 <div key={actor.id} className="actor-card">
                   {actor.profile_path ? (
@@ -65,7 +65,7 @@ const Detail = () => {
                   <p className="character">as {actor.character}</p>
                 </div>
               ))}
-            </di>
+            </div>
 
             <div className="big-btn">
               <a
