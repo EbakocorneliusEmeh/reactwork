@@ -33,7 +33,7 @@ const Detail = () => {
       <div className="wrapper">
         <section className="movie-detail">
           <div className="con">
-            <div className="heroo">
+            <div className="herooo">
               {movie.poster_path ? (
                 <img
                   src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
