@@ -79,7 +79,6 @@ const Home = () => {
     return () => clearTimeout(timeout);
   }, [searchTerm]);
 
-  // Render either search results or default sections
   const renderMovies = (moviesArray) => (
     <div className="movies-grid">
       {moviesArray.map((movie) => (
